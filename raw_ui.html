@@ -1,0 +1,298 @@
+<div class="a1">
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="brand">
+    <div class="hex">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <div>
+      <span class="bname">VERITAS</span>
+      <span class="bsub">Strategic Intelligence</span>
+    </div>
+  </div>
+  <div class="nlinks">
+    <button class="nlink on">Dashboard</button>
+    <button class="nlink">Threat Intel</button>
+    <button class="nlink">Global Analytics</button>
+    <button class="nlink">Cyber News</button>
+  </div>
+  <div class="nstatus">
+    <div class="ndot"></div>
+    <span class="nstxt">Live Scan Ready</span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero a2">
+  <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-edot"></div>
+        <span class="hero-etxt">System Online &middot; v2.4.1</span>
+      </div>
+      <div class="hero-h">VERITAS<span>.</span></div>
+      <div class="hero-tag">Advanced Password Intelligence Platform</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat danger">
+        <div class="hstat-val" id="hTotal">0</div>
+        <div class="hstat-lbl">Analyzed</div>
+      </div>
+      <div class="hstat safe">
+        <div class="hstat-val" id="hSafe">0</div>
+        <div class="hstat-lbl">Fortress</div>
+      </div>
+      <div class="hstat warn">
+        <div class="hstat-val" id="hWeak">0</div>
+        <div class="hstat-lbl">Weak</div>
+      </div>
+      <div class="hstat info">
+        <div class="hstat-val" id="hRisk" style="font-size:18px">—</div>
+        <div class="hstat-lbl">Risk Score</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB BAR ── -->
+<div class="tbar a3">
+  <button class="tbtn on">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    Dashboard
+  </button>
+  <button class="tbtn">
+    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Threat Intel
+  </button>
+  <button class="tbtn">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+    Global Map
+  </button>
+  <button class="tbtn">
+    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    Analytics
+  </button>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- LEFT COLUMN -->
+  <div style="display:flex;flex-direction:column;gap:16px">
+
+    <div class="panel a3">
+      <div class="ph">
+        <span class="ptitle">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Password Analyser
+        </span>
+        <span class="pbadge pb-blue">Real-time Intel</span>
+      </div>
+
+      <div class="isec">
+        <!-- Scan type tabs -->
+        <div class="stabs">
+          <button class="stab on" id="stPw" onclick="setScanTab('Pw')">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Password
+          </button>
+          <button class="stab" id="stPin" onclick="setScanTab('Pin')">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg>
+            PIN Code
+          </button>
+          <button class="stab" id="stPhr" onclick="setScanTab('Phr')">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Passphrase
+          </button>
+        </div>
+
+        <!-- ANALYSER UNIT -->
+        <div class="analyser">
+          <div class="analyser-input-row">
+            <div class="analyser-prefix">
+              <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+            </div>
+            <input
+              class="analyser-input"
+              id="pwField"
+              type="password"
+              placeholder="Enter directive to analyse..."
+              oninput="analyse(this.value)"
+              autocomplete="off"
+            >
+            <button class="analyser-eye" onclick="toggleVis()">
+              <svg id="eyeIco" viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- SEGMENTED STRENGTH BAR -->
+          <div class="seg-wrap">
+            <div class="seg-label-row">
+              <span class="seg-strength" id="segStr">AWAITING INPUT</span>
+              <span class="seg-bits" id="segBits">— BITS</span>
+            </div>
+            <div class="seg-bars" id="segBars">
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+              <div class="seg-bar"></div>
+            </div>
+            <div class="seg-detail">
+              <div class="seg-d">
+                <div class="seg-d-val" id="sdEnt">—</div>
+                <div class="seg-d-lbl">Entropy</div>
+                <div class="seg-d-bar" id="sdEntB" style="width:0%"></div>
+              </div>
+              <div class="seg-d">
+                <div class="seg-d-val" id="sdCrk" style="font-size:12px;line-height:1.35">—</div>
+                <div class="seg-d-lbl">Crack Time</div>
+                <div class="seg-d-bar" id="sdCrkB" style="width:0%"></div>
+              </div>
+              <div class="seg-d">
+                <div class="seg-d-val" id="sdRsk">—</div>
+                <div class="seg-d-lbl">Risk /100</div>
+                <div class="seg-d-bar" id="sdRskB" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIP -->
+        <div class="tip-box">
+          <div class="tip-ico">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <div class="tip-lbl">Intel Advisory</div>
+            <div class="tip-txt" id="tipTxt">Start typing to activate real-time security intelligence analysis.</div>
+          </div>
+        </div>
+
+        <!-- SCAN BUTTON -->
+        <button class="scan-btn" onclick="doScan()">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Initiate Full Scan
+        </button>
+      </div>
+
+      <!-- GENERATOR -->
+      <div class="gen-sec">
+        <div class="gen-ph">
+          <span class="gen-title">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Password Generator
+          </span>
+          <span class="pbadge pb-blue">AI-Assisted</span>
+        </div>
+        <div class="gen-out">
+          <span class="gen-pw" id="genOut">Click generate for a secure password</span>
+          <button class="cpybtn" onclick="cpyGen()" title="Copy">
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+        <div class="gopts">
+          <div class="gopt on" id="gU" onclick="tog('gU','U')">A&ndash;Z Upper</div>
+          <div class="gopt on" id="gN" onclick="tog('gN','N')">0&ndash;9 Nums</div>
+          <div class="gopt on" id="gS" onclick="tog('gS','S')">!@# Symbols</div>
+          <div class="gopt on" id="gA" onclick="tog('gA','A')">No Ambiguous</div>
+        </div>
+        <div class="lenrow">
+          <span class="lenlbl">Length</span>
+          <input type="range" class="lenr" min="8" max="32" value="20" step="1" id="lenR"
+            oninput="document.getElementById('lenN').textContent=this.value">
+          <span class="lennum" id="lenN">20</span>
+        </div>
+        <button class="genbtn" onclick="genPw()">Generate Secure Password</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="rcol">
+
+    <!-- THREAT MAP -->
+    <div class="panel a3">
+      <div class="ph">
+        <span class="ptitle">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          Threat Origin Map
+        </span>
+        <span class="pbadge pb-red" id="thrBadge">14 Active</span>
+      </div>
+      <div class="map-body">
+        <canvas id="tmap"></canvas>
+        <div class="map-bl">Live telemetry</div>
+        <div class="map-tr" id="mapTr">
+          <div class="mapdot" id="mapDot" style="background:var(--red)"></div>
+          <span id="mapTxt">14 threats</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARK WEB MONITOR -->
+    <div class="panel a4">
+      <div class="ph">
+        <span class="ptitle">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Dark Web Monitor
+        </span>
+        <span class="pbadge pb-amber">3 Flagged</span>
+      </div>
+      <div class="dw-rows">
+        <div class="dwr"><div class="dwi r"></div><div class="dws">RockYou2024 leak</div><div class="dwd">Jan 2024</div><div class="dwv dvb">Breached</div></div>
+        <div class="dwr"><div class="dwi g"></div><div class="dws">LinkedIn 2012</div><div class="dwd">Jun 2012</div><div class="dwv dvc">Clean</div></div>
+        <div class="dwr"><div class="dwi a"></div><div class="dws">Telegram combo list</div><div class="dwd">Mar 2025</div><div class="dwv dvm">Watching</div></div>
+        <div class="dwr"><div class="dwi g"></div><div class="dws">Adobe 2013 breach</div><div class="dwd">Oct 2013</div><div class="dwv dvc">Clean</div></div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="panel a4">
+      <div class="ph">
+        <span class="ptitle">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Achievements
+        </span>
+        <span class="pbadge pb-blue" id="earnTxt">0 / 8</span>
+      </div>
+      <div class="bdg-grid" id="bdgGrid"></div>
+    </div>
+
+    <!-- SCAN HISTORY -->
+    <div class="panel a5">
+      <div class="ph">
+        <span class="ptitle">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Scan History
+        </span>
+        <span class="pbadge pb-green">Live</span>
+      </div>
+      <table class="htable">
+        <thead>
+          <tr>
+            <th>Target</th>
+            <th>Type</th>
+            <th>Time</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody id="histBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+</div>
